@@ -25,19 +25,19 @@ docker run --name <CONTAINER_NAME> -it <IMAGE_NAME> bash
   python pict2colony.py -c 3 -i 5478 -o hoge.csv
   ```
   - -c: cut-level
-  - -i: input csv
-  - -o: output csv
+    - -i: input csv
+    - -o: output csv
   
   - colony2growth.py
   ```sh
   python colony2growth.py -i hoge.csv -o hoge2.csv
   ```
-  - -i: input csv
-  - -o: output csv
+    - -i: input csv
+    - -o: output csv
 
   - growth2ngwoth.py
   ```sh
   python growth2ngrowth.py -i hoge2.csv -o hoge3.csv
   ```
-  - -i: input csv
-  - -o: output csv
+    - -i: input csv
+    - -o: output csv
