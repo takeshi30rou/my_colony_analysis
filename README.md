@@ -24,7 +24,7 @@ docker run --name <CONTAINER_NAME> -it <IMAGE_NAME> bash
   ```sh
   python pict2colony.py -c 3 -i 5478 -o hoge.csv
   ```
-  - -c: cut-level
+    - -c: cut-level
     - -i: input csv
     - -o: output csv
   
