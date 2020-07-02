@@ -6,12 +6,12 @@
 
 2. Docker イメージのビルド
 
-Dockerfileを空のディレクトリンに入れる
+Dockerfileを空のディレクトリに入れる
 ```sh
 cd <directory for Dockerfile>
 docker build -t <IMAGE_NAME> .
 ```
-3. Docker コンテナ起動
+3. Docker コンテナ起動  
 docker run --name <CONTAINER_NAME> -it <IMAGE_NAME> bash
 
 ## 使い方
