@@ -5,8 +5,8 @@ import configparser
 import pickle
 
 if __name__ == '__main__':
-  config = configparser.ConfigParser()
-  config.read('pict2colony.ini')
-  colony_table = p2c.get_colony_table(config)
-  growth_talbe = c2g.get_growth_table(colony_table)
-  ngrowth_table = g2n.get_ngrowth_table(growth_talbe)
+    config = configparser.ConfigParser()
+    config.read('pict2colony.ini')
+    colony_table = p2c.get_colony_table(config)
+    growth_talbe = c2g.get_growth_table(colony_table)
+    ngrowth_table = g2n.get_ngrowth_table(growth_talbe)
