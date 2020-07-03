@@ -1,6 +1,8 @@
 import colony_analysis.pict2colony as p2c
 import subprocess
 from pathlib import Path
+import configparser
+import pandas as pd
 
 
 def _load_img(path_img):
@@ -8,6 +10,16 @@ def _load_img(path_img):
     fnames_img = res.stdout.splitlines()
     fnames_img = [str(Path(path_img) / f) for f in fnames_img]
     return fnames_img
+
+
+def test_get_colony_table():
+    colony_table = pd.read_csv("hoge.csv").values.tolist()
+    colony_table = [['fname', 'Time(min)', 'Column', 'Row', 'Area', 'Mass', 'cmass']] + colony_table
+
+    config = configparser.ConfigParser()
+    config.read("colony_analysis/pict2colony.ini")
+    
+    assert colony_table == p2c.get_colony_table(config)
 
 
 def test_load_img():
