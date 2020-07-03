@@ -679,7 +679,7 @@ def get_colony_table(config):
     if conf.getboolean('spot'):
         arg_lst += '-s'
     args = parser.parse_args(arg_lst)
-    fnames_img = load_args()
+    fnames_img, out_fname = load_args()
     growth_packss, poss = analyze(fnames_img, 'output')
 
     colony_table = [['fname', 'Time(min)', 'Column', 'Row', 'Area', 'Mass', 'cmass']]
