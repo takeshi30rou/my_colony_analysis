@@ -133,7 +133,7 @@ def output_csv(nary, poss, fname):
     for pos in poss:
         col, row = pos
         vs = nary[row - 1, col - 1, :]
-        vs = ["%.02f" % round(v, 2) for v in vs]
+        vs = [round(v, 2) for v in vs]
         out = [col, row] + vs
         w.writerow(out)
 
@@ -149,8 +149,8 @@ def get_ngrowth_table(table):
 
     ngrowth_table = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']]
     for pos in poss:
-        vs = ["%.02f" % round(v, 2) for v in nary[pos[1] - 1, pos[0] - 1, :]]
-        ngrowth_table += [[*pos, vs]]
+        vs = [round(v, 2) for v in nary[pos[1] - 1, pos[0] - 1, :]]
+        ngrowth_table += [[*pos, *vs]]
 
     return ngrowth_table
 
