@@ -13,13 +13,13 @@ brew cask install r
 apt install r-base
 ```
 
-## install colonylive
+## install colony_analysis
 ```shell
-pip install git+https://github.com/takeshi30rou/colonylive_v2
+pip install git+https://github.com/colonylive/colony_analysis
 ```
 or
 ```shell
-git clone https://github.com/takeshi30rou/colonylive_v2.git
-cd colonylive_v2
+git clone https://github.com/colonylive/colony_analysis.git
+cd colony_analysis
 pip install .
 ```
