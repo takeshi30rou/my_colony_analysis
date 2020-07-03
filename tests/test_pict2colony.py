@@ -1,4 +1,4 @@
-import colonylive.pict2colony as p2c
+import colony_analysis.pict2colony as p2c
 import subprocess
 from pathlib import Path
 

@@ -6,7 +6,7 @@ Lawless C, Wilkinson DJ, Young A, Addinall SG, Lydall DA: Colonyzer: automated q
 '''
 import numpy as np
 import matplotlib.pylab as plt
-from colonylive import imgop
+from colony_analysis import imgop
 
 
 def get_bg_smooth_1d(vary, dp, plot=False):

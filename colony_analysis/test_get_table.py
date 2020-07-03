@@ -1,6 +1,6 @@
-import pict2colony as p2c
-import colony2growth as c2g
-import growth2ngrowth as g2n
+import colony_analysis.pict2colony as p2c
+import colony_analysis.colony2growth as c2g
+import colony_analysis.growth2ngrowth as g2n
 import configparser
 import pickle
 

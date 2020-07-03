@@ -8,9 +8,9 @@ from pathlib import Path
 import cv2
 import numpy
 
-from colonylive import bgflatten
-from colonylive import imgop as imgop
-from colonylive import motsu as motsu
+from colony_analysis import bgflatten
+from colony_analysis import imgop as imgop
+from colony_analysis import motsu as motsu
 
 DEBUG = 0
 MIN_COLONY_AREA = 20
