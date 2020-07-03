@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  colonylive:
+    build: .
+    volumes:
+      - ./:/work/colonylive
+    environment:
+    - TZ=Asia/Tokyo
+    tty: True
+    restart: always
