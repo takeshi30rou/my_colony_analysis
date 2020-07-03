@@ -13,11 +13,11 @@ def _load_img(path_img):
 
 
 def test_get_colony_table():
-    colony_table = pd.read_csv("hoge.csv").values.tolist()
+    colony_table = pd.read_csv("tests/hoge.csv").values.tolist()
     colony_table = [['fname', 'Time(min)', 'Column', 'Row', 'Area', 'Mass', 'cmass']] + colony_table
 
     config = configparser.ConfigParser()
-    config.read("colony_analysis/pict2colony.ini")
+    config.read("tests/pict2colony.ini")
     
     assert colony_table == p2c.get_colony_table(config)
 
