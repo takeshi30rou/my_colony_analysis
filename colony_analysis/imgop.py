@@ -1,21 +1,13 @@
-#!/usr/bin/python
-#
-#   Image handling module
-#
-#   Required module:  opencv, numpy
-#
-#
-#   Author: Rikiya Takeuchi
-#   Date:   2013.03.20
-
-# import cv
+'''
+Image handling module
+'''
 import cv2
 import numpy as np
 
 # color value for drawing image
-RED = (255,0,0)
-BLUE = (0,0,255)
-YELLOW = (255,255,0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
 
 outId = 0   # start ID for output image file
 out_folder = '.tmp'
@@ -44,6 +36,7 @@ DEBUG = 0
 #     mat = cv.GetMat(cv_im)
 #     return mat
 
+
 def create_img(img, fname, outLevel=3, ary_flag=False):
     if outLevel > IMG_OUT_LEVEL:
         return
@@ -53,7 +46,7 @@ def create_img(img, fname, outLevel=3, ary_flag=False):
     # if ary_flag:
     #     img = get_mat_from_array(img)
 
-    #cv.SaveImage('%s/%02d-%s.jpg'%(out_folder,outId,fname), img)
+    # cv.SaveImage('%s/%02d-%s.jpg'%(out_folder,outId,fname), img)
     if DEBUG:
         cv2.imwrite(f'{out_folder}/{outId:02}-{fname}.png', img)
     else:
@@ -77,7 +70,7 @@ class ImageStore:
         self.gray = 0
         self.binary = 0
         self.cut_level = 2
-        self.oint_bg = 0 # optical intensity of background
+        self.oint_bg = 0  # optical intensity of background
         if grayFlag:
             self.gray = cv2.imread(fname, cv2.IMREAD_GRAYSCALE)
         else:
@@ -144,7 +137,13 @@ def unsharp_mask(imgGray, k=5, kernel=21, outLevel=2):
     # cv.Smooth(imgt,imgSmooth,cv.CV_GAUSSIAN, kernel)
     # cv.Sub(imgGray, imgSmooth, imgSub)
 
-    imgSmooth = cv2.GaussianBlur(imgGray, (kernel, kernel), sigmaX=0, sigmaY=0, borderType=cv2.BORDER_DEFAULT)
+    imgSmooth = cv2.GaussianBlur(
+        imgGray,
+        (kernel,
+         kernel),
+        sigmaX=0,
+        sigmaY=0,
+        borderType=cv2.BORDER_DEFAULT)
     imgSub = cv2.subtract(imgGray, imgSmooth)
 
     # m = cv.GetMat(imgSub)
@@ -221,7 +220,8 @@ def find_contours(imgBin):
     # img = cv.CloneImage(imgBin)
     # contours = cv.FindContours(img, cv.CreateMemStorage(), method=cv.CV_CHAIN_APPROX_NONE)
     # del img
-    contours, hierarchy = cv2.findContours(imgBin, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+    contours, hierarchy = cv2.findContours(
+        imgBin, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     return contours
 
 
@@ -242,7 +242,7 @@ def find_contours(imgBin):
 
 
 def draw_edges(img, edges, outName="draw_edge", outLevel=2):
-    RED = (0,0,255)
+    RED = (0, 0, 255)
     for edge in edges:
         img[edge[1], edge[0]] = RED
     create_img(img, outName, outLevel)
@@ -263,7 +263,12 @@ def draw_edges(img, edges, outName="draw_edge", outLevel=2):
 #     create_img(img, "fill_area", 1)
 
 
-def choose_contours_by_area_and_shape(img, contours, minArea, maxSqDegree, outLevel=1):
+def choose_contours_by_area_and_shape(
+        img,
+        contours,
+        minArea,
+        maxSqDegree,
+        outLevel=1):
     imgOut = np.copy(img)
     contoursSel = []
     for cnt in contours:
@@ -379,11 +384,11 @@ def get_centroid(contour):
 
 def draw_lines(img, lines, mode="grid"):
     imgOut = np.copy(img)
-    if mode=="grid":
+    if mode == "grid":
         for line in lines:
             cv2.line(imgOut, line[0], line[1], BLUE, 1)
         create_img(imgOut, "make grid", 2)
-    elif mode=="boundary":
+    elif mode == "boundary":
         for line in lines:
             cv2.line(imgOut, line[0], line[1], 255, 1)
         create_img(imgOut, "make boundary")

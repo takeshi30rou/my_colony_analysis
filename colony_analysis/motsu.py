@@ -1,15 +1,11 @@
-#!/usr/bin/python
-#
-#   Multilevel thresholding module
-#
-#   Required module:  opencv, numpy
-#
-#   Reference)
-#   Ping-Sung Liao, Tse-sheng Chen and Pau-choo Chung (2001) "A Fast Algorithm for Multilevel Thresholding"
-#
-#   Author: Rikiya Takeuchi
-#   Date:   2011.05.23
+'''
+Multilevel thresholding module
 
+Required module:  opencv, numpy
+
+Reference)
+Ping-Sung Liao, Tse-sheng Chen and Pau-choo Chung (2001) "A Fast Algorithm for Multilevel Thresholding"
+'''
 import sys
 import numpy
 import cv2
@@ -29,7 +25,7 @@ def get_thresholds(img, level):
 
 
 def get_histogram(img):
-    (pAry,ed) = numpy.histogram(img, range(0,257))
+    (pAry, ed) = numpy.histogram(img, range(0, 257))
     return pAry
 
 
@@ -40,25 +36,25 @@ def ignore_extreme_value(pAry):
 
 
 def build_lookup_table(pAry):
-    pTable = numpy.zeros((L,L))
-    sTable = numpy.zeros((L,L))
-    hTable = numpy.zeros((L,L))
+    pTable = numpy.zeros((L, L))
+    sTable = numpy.zeros((L, L))
+    hTable = numpy.zeros((L, L))
 
-    for i in range(0,L):
+    for i in range(0, L):
         pTable[i][i] = pAry[i]
         sTable[i][i] = pAry[i] * float(i)
 
-    for i in range(1,L-1):
-        pTable[1][i+1] = pTable[1][i] + pAry[i+1]
-        sTable[1][i+1] = sTable[1][i] + pAry[i+1] * float(i+1)
+    for i in range(1, L - 1):
+        pTable[1][i + 1] = pTable[1][i] + pAry[i + 1]
+        sTable[1][i + 1] = sTable[1][i] + pAry[i + 1] * float(i + 1)
 
-    for i in range(2,L):
-        for j in range(i+1,L):
-            pTable[i][j] = pTable[1][j] - pTable[1][i-1]
-            sTable[i][j] = sTable[1][j] - sTable[1][i-1]
+    for i in range(2, L):
+        for j in range(i + 1, L):
+            pTable[i][j] = pTable[1][j] - pTable[1][i - 1]
+            sTable[i][j] = sTable[1][j] - sTable[1][i - 1]
 
-    for i in range(1,L):
-        for j in range(i+1,L):
+    for i in range(1, L):
+        for j in range(i + 1, L):
             if pTable[i][j] != 0:
                 hTable[i][j] = sTable[i][j]**2 / pTable[i][j]
             else:
@@ -74,24 +70,25 @@ def calc_thresholds(pAry, M=2):
     bcVarMax = 0.
 
     if M == 2:
-        for i in range(1,L-M):
-            bcVar = hTable[1][i] + hTable[i+1][L-1]
+        for i in range(1, L - M):
+            bcVar = hTable[1][i] + hTable[i + 1][L - 1]
             if bcVar > bcVarMax:
                 ts[1] = i
                 bcVarMax = bcVar
     elif M == 3:
-        for i in range(1,L-M):
-            for j in range(i+1,L-M+1):
-                bcVar = hTable[1][i] + hTable[i+1][j] + hTable[j+1][L-1]
+        for i in range(1, L - M):
+            for j in range(i + 1, L - M + 1):
+                bcVar = hTable[1][i] + hTable[i + 1][j] + hTable[j + 1][L - 1]
                 if bcVar > bcVarMax:
                     ts[1] = i
                     ts[2] = j
                     bcVarMax = bcVar
     elif M == 4:
-        for i in range(1,L-M):
-            for j in range(i+1,L-M+1):
-                for k in range(j+1,L-M+2):
-                    bcVar = hTable[1][i] + hTable[i+1][j] + hTable[j+1][k] + hTable[k+1][L-1]
+        for i in range(1, L - M):
+            for j in range(i + 1, L - M + 1):
+                for k in range(j + 1, L - M + 2):
+                    bcVar = hTable[1][i] + hTable[i + 1][j] + \
+                        hTable[j + 1][k] + hTable[k + 1][L - 1]
                     if bcVar > bcVarMax:
                         ts[1] = i
                         ts[2] = j
