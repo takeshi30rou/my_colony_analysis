@@ -1,22 +1,8 @@
 # colony_analysis
 
-## 環境構築
-
-1. [Dockerのインストール](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-
-2. Docker イメージのビルド
-
-Dockerfileを空のディレクトリに入れる
-```sh
-cd <directory for Dockerfile>
-docker build -t <IMAGE_NAME> .
-```
-3. Docker コンテナ起動  
-docker run --name <CONTAINER_NAME> -it <IMAGE_NAME> bash
-
 ## 使い方
 
-- リストの出力を得る場合（他のモジュールとの結合用）
+- リストの出力を得る場合（他のモジュールとの結合用)  
   test_get_table.pyを参照
 
 - CSVの出力を得る場合
