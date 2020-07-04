@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from colony_analysis import imgop as imgop
+from colony_analysis import imgop
 
 from colony_analysis import pict2colony as p2c
 
