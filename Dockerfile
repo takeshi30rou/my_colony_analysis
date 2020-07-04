@@ -4,8 +4,8 @@ RUN apt-get update \
  && apt-get -y install \
  r-base
 
+COPY ./ /work/colony_analysis
+
 WORKDIR /work/colony_analysis
 
-COPY requirements.txt ./
-
-RUN pip install -r requirements.txt
+RUN pip install -e .
