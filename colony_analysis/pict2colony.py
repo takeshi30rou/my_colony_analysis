@@ -9,8 +9,8 @@ import cv2
 import numpy
 
 from colony_analysis import bgflatten
-from colony_analysis import imgop as imgop
-from colony_analysis import motsu as motsu
+from colony_analysis import imgop
+from colony_analysis import motsu
 
 DEBUG = 0
 MIN_COLONY_AREA = 20
