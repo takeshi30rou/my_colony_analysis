@@ -1,12 +1,12 @@
 '''
 Compute three growth parameters from the growth curve
 '''
+import argparse
 
 from colony_analysis import colony2growth as c2g
 
 
 def main():
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help='input CSV path', required=True)
     parser.add_argument(

@@ -11,8 +11,8 @@ The program execute following normalization (in order)
 Reference)
 Baryshnikova A, Costanzo M, Kim Y, Ding H, Koh J, Toufighi K, Youn J-Y, Ou J, San Luis B-J, Bandyopadhyay S, Hibbs M, Hess D, Gingras A-C, Bader GD, Troyanskaya OG, Brown GW, Andrews B, Boone C, Myers CL: Quantitative analysis of fitness and genetic interactions in yeast on a genome scale. Nat Meth 2010, 7:1017-1024.
 '''
+import argparse
 import numpy as np
-
 import colony_analysis.growth2ngrowth as g2n
 
 
@@ -28,7 +28,6 @@ import colony_analysis.growth2ngrowth as g2n
 
 
 def main():
-    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help='input CSV path', required=True)
     parser.add_argument('-o', '--output', help='output CSV path', required=True)
