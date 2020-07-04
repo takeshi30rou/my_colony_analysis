@@ -515,10 +515,10 @@ def load_args():
         return fnames_img
 
 
-def load_plate(fname):
+def load_plate(fname, cut_level):
     # load image
     img = imgop.ImageStore(fname)
-    img.cut_level = args.cut_level
+    img.cut_level = cut_level
     return img
 
 
@@ -644,7 +644,7 @@ def analyze(fnames_img, label_out):
     fname = fname_img_last
 
     # colony detection
-    img = load_plate(fname)
+    img = load_plate(fname, args.cut_level)
     imgobj = get_imgobj(img)
     grid = get_colony_grid(img, imgobj)
     img = make_light_flatten_gray_img(img, grid)
@@ -658,7 +658,7 @@ def analyze(fnames_img, label_out):
     for i, fname_img in enumerate(fnames_img):
         print(f'{i + 1}/{n}')
         fname = fname_img
-        img = load_plate(fname)
+        img = load_plate(fname, args.cut_level)
         # img = make_light_flatten_gray_img(img, grid)
         img = get_bg(img, grid, colony)
         growth_packss += [get_growth(img, grid, colony, args.radius)]
