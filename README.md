@@ -1,5 +1,5 @@
 # colony_analysis
- 
+colony_analysis is xxx...
 
 ## requirement
 To use the colony_analysis, R are required.  
