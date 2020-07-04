@@ -273,7 +273,6 @@ class ImageObject:
         self.objid_ary = objid_ary
 
     def get_ary_colony_from_imgobj_edge(self, img, objid, rx, ry):
-        xyColonys = []
         ary = numpy.zeros((ry * 2, rx * 2), dtype=numpy.int32)
         # load all edges
         edges = self.edgeSets[objid]
@@ -561,7 +560,6 @@ def make_light_flatten_gray_img(img, grid):
     img_crop = imgop.crop(img.gray, grid.xyTL, grid.xyBR, 2)
     # thresholding
     ts = motsu.get_thresholds(img_crop, img.cut_level)
-    t_cut = ts[-1]
     # make psuedo plate then correct
     # imgary_crip = imgop.get_array_from_image(img_crop)
     img_pseudo = bgflatten.make_pseudo_plate(img_crop)
@@ -638,7 +636,7 @@ def output_csv(fnames_img, growth_packss, poss, fname_out):
 
 
 def analyze(fnames_img, label_out):
-    ccwd = os.getcwd()
+    os.getcwd()
 
     fname_img_last = fnames_img[-1]
     fname = fname_img_last
