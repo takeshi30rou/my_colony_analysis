@@ -153,39 +153,3 @@ def get_ngrowth_table(table):
         ngrowth_table += [[*pos, *vs]]
 
     return ngrowth_table
-
-
-def main():
-    # import optparse
-    # parser = optparse.OptionParser(usage="%prog [input growth csv] [output csv]")
-    # #parser.add_option('-f', '--flatref', action='store_true', dest='use_flatref', help='Use flat refference array instead of data-based array for spatial normalimzation', default=False)
-    # (opts, args) = parser.parse_args()
-    # if len(args) != 2:
-    #     parser.print_help()
-    #     quit()
-    # fname_in = args[0]
-    # fname_out = args[1]
-
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input', help='input CSV path', required=True)
-    parser.add_argument('-o', '--output', help='output CSV path', required=True)
-    args = parser.parse_args()
-
-    fname_in = args.input
-    fname_out = args.output
-
-    ary, poss = load_csv(fname_in)
-    nary = ary.copy()
-
-    for ind in range(4):
-        # reference array
-        refary = np.ones(ary[:, :, ind].shape)
-        nary[:, :, ind] = norm_growth(ary[:, :, ind], refary)
-
-    output_csv(nary, poss, fname_out)
-    print()
-
-
-if __name__ == "__main__":
-    main()

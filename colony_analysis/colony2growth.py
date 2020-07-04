@@ -193,39 +193,3 @@ def get_growth_table(table):
     for pos, conv, gparam in zip(poss, convs, gparams):
         table += [[*pos, conv, *gparam]]
     return table
-
-
-def main():
-    # import optparse
-    # parser = optparse.OptionParser(usage="%prog [input csv file] [output csv file]")
-    # (options, args) = parser.parse_args()
-    # if len(args) != 2:
-    #     parser.print_help()
-    #     quit()
-    # fname_in = args[0]
-    # fname_out = args[1]
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-i', '--input', help='input CSV path', required=True)
-    parser.add_argument(
-        '-o',
-        '--output',
-        help='output CSV path',
-        required=True)
-    args = parser.parse_args()
-
-    fname_in = args.input
-    fname_out = args.output
-    # conventional value
-    times, poss, vss = load_csv(fname_in, vtype='area')
-    convs = get_conv_value(times, vss)
-    # growth paramenters
-    times, poss, vss = load_csv(fname_in, vtype='cmass')
-    # times, poss, vss = load_csv(fname_in, vtype='mass')
-    gparams = get_growth_params(times, vss)
-
-    output_as_csv(poss, convs, gparams, fname_out)
-
-
-if __name__ == '__main__':
-    main()
