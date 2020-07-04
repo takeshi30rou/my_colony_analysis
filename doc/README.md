@@ -1,11 +1,7 @@
 # colony_analysis
 
-## 使い方
-
-### リストの出力を得る場合（他のモジュールとの結合用)  
-  test_get_table.pyを参照
-
-### CSVの出力を得る場合
+## Usage
+### To get csv from colony images
 #### pict2colony.py
   ```sh
   python pict2colony.py -c 3 -i 5478 -o hoge.csv

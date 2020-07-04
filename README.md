@@ -15,7 +15,7 @@ apt install r-base
 ```
 
 ## install colony_analysis
-There are two install method.  
+There are two install methods.  
 
 ```shell
 pip install git+https://github.com/colonylive/colony_analysis
@@ -27,5 +27,5 @@ cd colony_analysis
 pip install .
 ```
 
-## 使い方
-[ここ](https://github.com/colonylive/colony_analysis/tree/master/doc)を参照
+## Usage
+Please refer to [this](https://github.com/colonylive/colony_analysis/tree/master/doc)
