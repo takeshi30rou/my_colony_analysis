@@ -6,14 +6,6 @@ from colony_analysis import colony2growth as c2g
 
 
 def main():
-    # import optparse
-    # parser = optparse.OptionParser(usage="%prog [input csv file] [output csv file]")
-    # (options, args) = parser.parse_args()
-    # if len(args) != 2:
-    #     parser.print_help()
-    #     quit()
-    # fname_in = args[0]
-    # fname_out = args[1]
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help='input CSV path', required=True)
