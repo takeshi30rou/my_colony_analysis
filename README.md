@@ -2,18 +2,21 @@
  
 
 ## requirement
-
-#### mac os
+To use the colony_analysis, R are required.  
+You can install R by the following methods.  
+#### macOS
 ```shell
 brew cask install r
 ```
 
-#### ubuntu
+#### Ubuntu
 ```shell
 apt install r-base
 ```
 
 ## install colony_analysis
+There are two install method.  
+
 ```shell
 pip install git+https://github.com/colonylive/colony_analysis
 ```
