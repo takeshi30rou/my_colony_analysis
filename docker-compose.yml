@@ -1,10 +1,10 @@
 version: "2"
 
 services:
-  colonylive:
+  colony_analysis:
     build: .
     volumes:
-      - ./:/work/colonylive
+      - ./:/work/colony_analysis
     environment:
     - TZ=Asia/Tokyo
     tty: True

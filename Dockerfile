@@ -4,7 +4,7 @@ RUN apt-get update \
  && apt-get -y install \
  r-base
 
-WORKDIR /work/colonylive
+WORKDIR /work/colony_analysis
 
 COPY requirements.txt ./
 
