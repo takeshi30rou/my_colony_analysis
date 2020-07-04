@@ -23,3 +23,6 @@ git clone https://github.com/colonylive/colony_analysis.git
 cd colony_analysis
 pip install .
 ```
+
+## 使い方
+[ここ](https://github.com/colonylive/colony_analysis/tree/master/doc)を参照
