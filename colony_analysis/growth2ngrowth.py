@@ -92,21 +92,12 @@ def rowcol_norm(ary):
 
 
 def load_csv(fname):
-    header = 1
-    poss = []
-    ary = np.zeros((32, 48, 4))
-    for items in csv.reader(open(fname, 'r')):
-        if header:
-            header -= 1
-            continue
-        col = int(items[0])
-        row = int(items[1])
-        poss += [[col, row]]
-        v = float(items[2])
-        for ind in range(4):
-            v = float(items[2 + ind])
-            ary[row - 1, col - 1, ind] = v
-    return ary, poss
+    with open(fname, 'r') as f:
+        header = next(csv.reader(f))
+        data = [list(map(float,l)) for l in csv.reader(f)]
+    table = [header] + data
+    print(table)
+    return load_table(table)
 
 
 def load_table(table):
