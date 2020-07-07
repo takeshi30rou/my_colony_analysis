@@ -110,21 +110,17 @@ def load_csv(fname):
 
 
 def load_table(table):
-    header = 1
-    poss = []
-    ary = np.zeros((32, 48, 4))
-    for items in table:
-        if header:
-            header -= 1
-            continue
-        col = int(items[0])
-        row = int(items[1])
-        poss += [[col, row]]
-        v = float(items[2])
-        for ind in range(4):
-            v = float(items[2 + ind])
-            ary[row - 1, col - 1, ind] = v
-    return ary, poss
+    plate_format = [32, 48]
+    array_shape = [32, 48] + [4]
+
+    header = table[0] # header
+
+    n_table = np.array(table[1:]) # change list to narray
+    
+    poss = n_table[:, :2].astype(np.int) # get col and row from n_table[0] and n_table[1], respectively
+    ary = np.reshape(n_table[:, 2:], array_shape)
+
+    return ary, poss.tolist()
 
 
 def output_csv(nary, poss, fname):
