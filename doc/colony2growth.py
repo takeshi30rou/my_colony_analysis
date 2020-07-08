@@ -9,11 +9,7 @@ from colony_analysis import colony2growth as c2g
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--input', help='input CSV path', required=True)
-    parser.add_argument(
-        '-o',
-        '--output',
-        help='output CSV path',
-        required=True)
+    parser.add_argument('-o', '--output', elp='output CSV path', required=True)
     args = parser.parse_args()
 
     fname_in = args.input
