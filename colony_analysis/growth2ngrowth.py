@@ -128,9 +128,10 @@ def get_ngrowth_table(table):
     ary, poss = load_table(table)
     nary = ary.copy()
 
+    # reference array
+    plate_format = [32, 48]
+    refary = np.ones(plate_format)
     for ind in range(4):
-        # reference array
-        refary = np.ones(ary[:, :, ind].shape)
         nary[:, :, ind] = norm_growth(ary[:, :, ind], refary)
 
     ngrowth_table = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']]
