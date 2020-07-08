@@ -83,10 +83,10 @@ def rowcol_norm(ary):
     row_meds = np.median(ary, axis=1)
     rrs_r = np.median(row_meds) / row_meds
     # normalize
-    cary = np.zeros(ary.shape)
-    for row in range(32):
-        for col in range(48):
-            cary[row, col] = ary[row, col] * rrs_r[row] * crs_r[col]
+    m_rrs_r = rrs_r.reshape(-1, 1)  # vector to matrix
+    m_crs_r = crs_r.reshape(-1, 1)  # vector to matrix
+    cary = ary * np.dot(m_rrs_r, m_crs_r.T)
+
     return cary
 
 
