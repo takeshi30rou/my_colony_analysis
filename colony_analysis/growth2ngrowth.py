@@ -20,6 +20,11 @@ import scipy.signal
 SIZE_MED_FILT = 7  # 7x7
 SIZE_AVE_FILT = 10  # 10x10
 
+# Spatial normalization
+# for average filter
+tmp = np.ones((SIZE_AVE_FILT, SIZE_AVE_FILT))
+avgfilt = tmp / tmp.size
+
 
 # INPUT
 # ary: sample array
@@ -57,12 +62,6 @@ def plate_norm(ary):
     return cary
 
 
-# Spatial normalization
-# for average filter
-tmp = np.ones((SIZE_AVE_FILT, SIZE_AVE_FILT))
-avgfilt = tmp / tmp.size
-
-
 def spatial_norm(ary, refary):
     # calc med filt estimetes
     ary_log = np.ma.log(ary / refary)
@@ -94,7 +93,7 @@ def rowcol_norm(ary):
 def load_csv(fname):
     with open(fname, 'r') as f:
         header = next(csv.reader(f))
-        data = [list(map(float,l)) for l in csv.reader(f)]
+        data = [list(map(float, items)) for items in csv.reader(f)]
     table = [header] + data
     print(table)
     return load_table(table)
@@ -102,13 +101,14 @@ def load_csv(fname):
 
 def load_table(table):
     plate_format = [32, 48]
-    array_shape = [32, 48] + [4]
+    array_shape = plate_format + [4]
 
-    header = table[0] # header
+    header = table[0]  # header
 
-    n_table = np.array(table[1:]) # change list to narray
-    
-    poss = n_table[:, :2].astype(np.int) # get col and row from n_table[0] and n_table[1], respectively
+    n_table = np.array(table[1:])  # change list to narray
+
+    # get col and row from n_table[0] and n_table[1], respectively
+    poss = n_table[:, :2].astype(np.int)
     ary = np.reshape(n_table[:, 2:], array_shape)
 
     return ary, poss.tolist()
