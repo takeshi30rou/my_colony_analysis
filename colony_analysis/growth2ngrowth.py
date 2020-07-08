@@ -95,7 +95,6 @@ def load_csv(fname):
         header = next(csv.reader(f))
         data = [list(map(float, items)) for items in csv.reader(f)]
     table = [header] + data
-    print(table)
     return load_table(table)
 
 
