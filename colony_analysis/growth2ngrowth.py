@@ -48,10 +48,10 @@ def norm_growth(ary, refary):
 # PMM: Plate middle mean
 def calc_pmm(vs):
     n = len(vs)
-    ns = n * 0.2
-    ne = n * 0.8
+    ns = int(n * 0.2)
+    ne = int(n * 0.8)
     vs_sort = np.sort(vs)
-    pmm = np.mean(vs_sort[int(ns):int(ne)])
+    pmm = np.mean(vs_sort[ns:ne])
     return pmm
 
 
