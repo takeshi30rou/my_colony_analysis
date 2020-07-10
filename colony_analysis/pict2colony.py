@@ -559,7 +559,7 @@ def get_colony_grid(img, imgobj):
 def make_light_flatten_gray_img(img, grid):
     img_crop = imgop.crop(img.gray, grid.xyTL, grid.xyBR, 2)
     # thresholding
-    ts = motsu.get_thresholds(img_crop, img.cut_level)
+    motsu.get_thresholds(img_crop, img.cut_level)
     # make psuedo plate then correct
     # imgary_crip = imgop.get_array_from_image(img_crop)
     img_pseudo = bgflatten.make_pseudo_plate(img_crop)
