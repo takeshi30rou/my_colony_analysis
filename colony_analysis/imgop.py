@@ -137,13 +137,7 @@ def unsharp_mask(imgGray, k=5, kernel=21, outLevel=2):
     # cv.Smooth(imgt,imgSmooth,cv.CV_GAUSSIAN, kernel)
     # cv.Sub(imgGray, imgSmooth, imgSub)
 
-    imgSmooth = cv2.GaussianBlur(
-        imgGray,
-        (kernel,
-         kernel),
-        sigmaX=0,
-        sigmaY=0,
-        borderType=cv2.BORDER_DEFAULT)
+    imgSmooth = cv2.GaussianBlur(imgGray, (kernel, kernel), sigmaX=0, sigmaY=0, borderType=cv2.BORDER_DEFAULT)
     imgSub = cv2.subtract(imgGray, imgSmooth)
 
     # m = cv.GetMat(imgSub)
@@ -242,7 +236,6 @@ def find_contours(imgBin):
 
 
 def draw_edges(img, edges, outName="draw_edge", outLevel=2):
-    RED = (0, 0, 255)
     for edge in edges:
         img[edge[1], edge[0]] = RED
     create_img(img, outName, outLevel)
@@ -263,12 +256,7 @@ def draw_edges(img, edges, outName="draw_edge", outLevel=2):
 #     create_img(img, "fill_area", 1)
 
 
-def choose_contours_by_area_and_shape(
-        img,
-        contours,
-        minArea,
-        maxSqDegree,
-        outLevel=1):
+def choose_contours_by_area_and_shape(img, contours, minArea, maxSqDegree, outLevel=1):
     imgOut = np.copy(img)
     contoursSel = []
     for cnt in contours:
