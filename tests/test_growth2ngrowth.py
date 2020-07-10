@@ -9,6 +9,7 @@ growth_talbe = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']] + growth_talbe
 ngrowth_table = pd.read_csv("tests/hoge3.csv").values.tolist()
 ngrowth_table = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']] + ngrowth_table
 
+
 def _load_table(table):
     header = 1
     poss = []
@@ -25,6 +26,7 @@ def _load_table(table):
             v = float(items[2 + ind])
             ary[row - 1, col - 1, ind] = v
     return ary, poss
+
 
 def _load_csv(fname):
     header = 1
@@ -43,19 +45,22 @@ def _load_csv(fname):
             ary[row - 1, col - 1, ind] = v
     return ary, poss
 
+
 def test_get_growth_table():
     assert ngrowth_table == g2n.get_ngrowth_table(growth_talbe)
+
 
 def test_load_table():
     expected = _load_table(growth_talbe)
     result = g2n.load_table(growth_talbe)
 
-    np.testing.assert_allclose(expected[0], result[0]) # ary
-    assert expected[1] == result[1] # poss
+    np.testing.assert_allclose(expected[0], result[0])  # ary
+    assert expected[1] == result[1]  # poss
+
 
 def test_load_csv():
     expected = _load_csv("tests/hoge2.csv")
     result = g2n.load_csv("tests/hoge2.csv")
 
-    np.testing.assert_allclose(expected[0], result[0]) # ary
-    assert expected[1] == result[1] # poss
+    np.testing.assert_allclose(expected[0], result[0])  # ary
+    assert expected[1] == result[1]  # poss
