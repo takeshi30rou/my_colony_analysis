@@ -12,5 +12,6 @@ setup(
     author='Takeshi Nomura',
     author_email='nomura.takeshi.no3@is.naist.jp',
     install_requires=_requires_from_file('requirements.txt'),
-    packages=find_packages()
+    packages=find_packages(),
+    python_requires='>3.6'
 )
