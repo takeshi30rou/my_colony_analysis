@@ -21,9 +21,6 @@ SIZE_MED_FILT = 7  # 7x7
 SIZE_AVE_FILT = 10  # 10x10
 
 # Spatial normalization
-# for average filter
-tmp = np.ones((SIZE_AVE_FILT, SIZE_AVE_FILT))
-avgfilt = tmp / tmp.size
 
 
 # INPUT
@@ -68,6 +65,8 @@ def spatial_norm(ary, refary):
     # median filter
     ary_m = scipy.signal.medfilt2d(ary_log, SIZE_MED_FILT)
     # average filter
+    tmp = np.ones((SIZE_AVE_FILT, SIZE_AVE_FILT))  # for average filter
+    avgfilt = tmp / tmp.size
     ary_ma = scipy.signal.convolve(ary_m, avgfilt, "same")
     cary = ary * (1 / np.exp(ary_ma))
     return cary
