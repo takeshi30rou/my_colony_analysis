@@ -11,15 +11,15 @@ MIN_COLONY_AREA = 20
 DIF_INT_COLONY = 10  # required optical intensity
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-c', '--cut-level', type=int, dest='cut_level', help='Specify thresholding levels. default=2', default=2)
-parser.add_argument('-d', '--debug', dest='debug_mode', action='store_true')
-parser.add_argument('-i', '--imgpath', help='input img path')
-parser.add_argument('-o', '--output', help='output csv path')
-parser.add_argument('-f', '--format', type=int, dest='plate_format', help='colony format of plate (96,384,1536). default=1536', default=1536)
-parser.add_argument('-m', '--manual-pos', dest='m_pos', help='Specify pixel position of center of Left Top colony and Right Bottom colony. The format is [LT-x,LT-y,RB-x,RB-y]. e.g. 100,100,1500,1800', default='')
-parser.add_argument('-r', '--radius', type=int, help='Radius of center colony region. default=8', default=8)
-parser.add_argument('-g', '--grid', type=str, dest='grid_cfg', help='specify grid configuration. default=none', default='')
-parser.add_argument('-s', '--spot', action='store_true', help='Spot analysis (Use fix colony area of last image). default=False')
+parser.add_argument("-c", "--cut-level", type=int, dest="cut_level", help="Specify thresholding levels. default=2", default=2)
+parser.add_argument("-d", "--debug", dest="debug_mode", action="store_true")
+parser.add_argument("-i", "--imgpath", help="input img path")
+parser.add_argument("-o", "--output", help="output csv path")
+parser.add_argument("-f", "--format", type=int, dest="plate_format", help="colony format of plate (96,384,1536). default=1536", default=1536)
+parser.add_argument("-m", "--manual-pos", dest="m_pos", help="Specify pixel position of center of Left Top colony and Right Bottom colony. The format is [LT-x,LT-y,RB-x,RB-y]. e.g. 100,100,1500,1800", default="")
+parser.add_argument("-r", "--radius", type=int, help="Radius of center colony region. default=8", default=8)
+parser.add_argument("-g", "--grid", type=str, dest="grid_cfg", help="specify grid configuration. default=none", default="")
+parser.add_argument("-s", "--spot", action="store_true", help="Spot analysis (Use fix colony area of last image). default=False")
 args = parser.parse_args()
 
 
@@ -58,7 +58,7 @@ def analyze(fnames_img, label_out):
     n = len(fnames_img)
     fnames_img.reverse()
     for i, fname_img in enumerate(fnames_img):
-        print(f'{i + 1}/{n}')
+        print(f"{i + 1}/{n}")
         fname = fname_img
         img = p2c.load_plate(fname, args.cut_level)
         # img = make_light_flatten_gray_img(img, grid)
@@ -69,7 +69,7 @@ def analyze(fnames_img, label_out):
 
 def main():
     fnames_img, out_fname = load_args()
-    growth_packss, poss = analyze(fnames_img, 'output')
+    growth_packss, poss = analyze(fnames_img, "output")
     p2c.output_csv(fnames_img, growth_packss, poss, out_fname)
 
 
