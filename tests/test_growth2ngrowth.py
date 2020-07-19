@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 import csv
 
-growth_talbe = pd.read_csv("tests/hoge2.csv").values.tolist()
+growth_talbe = pd.read_csv("tests/colony2growth.csv").values.tolist()
 growth_talbe = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']] + growth_talbe
 
-ngrowth_table = pd.read_csv("tests/hoge3.csv").values.tolist()
+ngrowth_table = pd.read_csv("tests/growth2ngrowth.csv").values.tolist()
 ngrowth_table = [['Column', 'Row', 'CONV', 'LTG', 'MGR', 'SPG']] + ngrowth_table
 
 
@@ -59,8 +59,8 @@ def test_load_table():
 
 
 def test_load_csv():
-    expected = _load_csv("tests/hoge2.csv")
-    result = g2n.load_csv("tests/hoge2.csv")
+    expected = _load_csv("tests/colony2growth.csv")
+    result = g2n.load_csv("tests/colony2growth.csv")
 
     np.testing.assert_allclose(expected[0], result[0])  # ary
     assert expected[1] == result[1]  # poss

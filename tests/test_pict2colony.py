@@ -13,7 +13,7 @@ def _load_img(path_img):
 
 
 def test_get_colony_table():
-    colony_table = pd.read_csv("tests/hoge.csv").values.tolist()
+    colony_table = pd.read_csv("tests/pict2colony.csv").values.tolist()
     colony_table = [['fname', 'Time(min)', 'Column', 'Row', 'Area', 'Mass', 'cmass']] + colony_table
 
     config = configparser.ConfigParser()
@@ -23,7 +23,7 @@ def test_get_colony_table():
 
 
 def test_load_img():
-    path_img = "tests/5478"
+    path_img = "tests/plates"
     print(p2c.load_img(path_img))
     print(_load_img(path_img))
 
