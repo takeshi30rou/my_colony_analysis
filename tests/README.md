@@ -1,6 +1,6 @@
 ##
 Before you test this repository, please download from [here](https://drive.google.com/drive/folders/1oGhDGgz8nyfXi1upOZf3obbIuDiuBR4O?usp=sharing).  
-Then place the files and folder f as follows.  
+Then place the files and folder as follows.  
 
 ```
 colony_analysis  
