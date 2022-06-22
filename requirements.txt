@@ -1,5 +1,5 @@
 matplotlib==3.2.2
-numpy==1.19.0
+numpy==1.22.0
 opencv-python==4.2.0.34
 pandas==1.0.5
 rpy2==3.3.4
